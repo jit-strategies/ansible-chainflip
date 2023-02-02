@@ -1,0 +1,43 @@
+---
+chainflip_chain: perseverance
+ubuntu_release: focal
+chainflip_release: "{{ chainflip_chain }}"
+chainflip_apt_repository_url: https://repo.chainflip.io
+chainflip_apt_repository_key_id: FB3E88547C6B47C6
+health_check: true
+
+node_chaindata_path: "/etc/chainflip/chaindata"
+node_chainspec_file: "/etc/chainflip/chainspecs/{{ chainflip_chain }}.json"
+node_p2p_key_file: "/etc/chainflip/keys/node_key_file"
+node_systemd_override: true
+node_dev_mode: false
+node_validator: true
+node_archive: false
+node_prometheus_external: false
+node_state_cache_size: 0
+node_bootnodes: ""
+node_rpc_cors: ""
+node_rpc_port: 9933
+# node_in_peers: 200
+# node_out_peers: 200
+
+engine_enabled: true
+engine_generate_eth_key: false
+# engine_eth_private_key: "482fd89c4cdcdfe5e84c8ead352a0d7effe867c677e2f4c235ca87a3f76a9ba4"
+# [node_p2p]
+engine_p2p_key_file: "{{ node_p2p_key_file }}"
+engine_p2p_port: 8078
+# [state_chain]
+engine_state_chain_ws_endpoint: ws://127.0.0.1:9944
+engine_state_chain_signing_key_file: "/etc/chainflip/keys/signing_key_file"
+# [eth]
+engine_eth_ws_node_endpoint: "ws://127.0.0.1:8080"
+engine_eth_http_node_endpoint: "http://127.0.0.1:8080"
+engine_eth_private_key_file: "/etc/chainflip/keys/ethereum_key_file"
+# [health]
+engine_health_check_host: 127.0.0.1
+engine_health_check_port: "5555"
+# [db]
+engine_signing_db_file_name: data.db
+# [db]
+engine_polkadot_rpc_ws: "ws://127.0.0.1:8081"

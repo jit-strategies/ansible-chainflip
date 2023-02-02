@@ -1,0 +1,20 @@
+namespace: jitstrategies
+name: chainflip
+version: 1.0.0
+readme: README.md
+authors:
+  - JIT Strategies DevOps <devops@jitstrategies.com>
+description: A collection of roles to deploy and manage Chainflip nodes.
+license:
+  - Apache-2.0
+license_file: LICENSE
+tags:
+  - blockchain
+  - dex
+dependencies:
+  community.general: ">=6.1.0"
+repository: https://github.com/jit-strategies/chainflip-ansible-collection
+documentation: https://docs.chainflip.io
+homepage: https://chainflip.io
+issues: https://github.com/jit-strategies/chainflip-ansible-collection/issues
+build_ignore: []

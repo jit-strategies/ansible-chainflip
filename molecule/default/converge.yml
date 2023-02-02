@@ -1,0 +1,32 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include node"
+      ansible.builtin.include_role:
+        name: node
+      vars:
+        node_archive: true
+        engine_generate_eth_key: true
+    # - name: "Include activate"
+    #   ansible.builtin.include_role:
+    #     name: activate
+  vars:
+    validator01:
+      # eth_private_key:
+      # keyshare:
+      signing_keys:
+        seed: senior judge jazz clerk depart practice enemy spy stumble parent clutch coast
+        aura: 0x26a45c9a9abf1cf25bb2ad1e86fa3a15034c209e0946441cfdd37812c02c9da7
+        gran: 0x7af27a995cb1e8e010c31bac0353b6b990d1ea46aa5e3aa4814be5c46fa3b657
+        p2p: 936cc515e4dd9e57c3f405fb47db814d7204763ef97a55308f4afeedbe7d543d
+        ss58Address: cFMrg2MkuyjZp3amHNFrXa11bsVVJL5EKPjgPqVKLoGJHsQVX
+    validator02:
+      # eth_private_key:
+      # keyshare:
+      signing_keys:
+        seed: toy helmet farm tackle punch merry garage wool final carry consider fiber
+        aura: 0x79bf108811291fd2d8b8d752f3bc8dd77ea4e653473fdcfa3203a2735dc1f35a
+        gran: 0x5a0f89a098a878dc7f24c699dbb17a9af806d9453500cf9db23d7855c1fc23fe
+        p2p: 853ecfc8ba1a47453368fc6c4faaffc092bfccdbb76dd718a1f32c35fe92d3d8
+        ss58Address: cFNp2pmi1sRLqoo2Ktd64UgAVTsrZpAJibDyhTVDbVY6KUhR6

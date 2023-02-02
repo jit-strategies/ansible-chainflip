@@ -1,0 +1,42 @@
+---
+- name: Create chainflip keys directory
+  ansible.builtin.file:
+    path: /etc/chainflip/keys/
+    state: directory
+    mode: "0700"
+
+- name: Check if node key exists
+  ansible.builtin.stat:
+    path: "{{ node_p2p_key_file }}"
+  register: node_key_file
+
+- name: Generate node keys
+  register: node_key
+  no_log: true
+  ansible.builtin.command:
+    cmd: chainflip-node key generate-node-key --file "{{ node_p2p_key_file }}"
+    creates: "{{ node_p2p_key_file }}"
+  notify: Restart chainflip-node
+
+- name: Save generated P2P address as fact
+  ansible.builtin.set_fact:
+    generated_P2PAddress: "{{ node_key.stderr }}"
+  when: not node_key_file.stat.exists
+
+- name: Create chainflip-node systemd override directory
+  ansible.builtin.file:
+    path: /etc/systemd/system/chainflip-node.service.d
+    state: directory
+    mode: "0755"
+  when:
+    - node_systemd_override
+
+- name: Create chainflip-node systemd override file
+  ansible.builtin.template:
+    dest: "/etc/systemd/system/chainflip-node.service.d/override.conf"
+    src: chainflip-node.conf.j2
+    mode: "0600"
+  notify:
+    - Restart chainflip-node
+  when:
+    - node_systemd_override

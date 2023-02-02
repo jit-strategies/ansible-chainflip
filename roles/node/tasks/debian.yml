@@ -1,0 +1,46 @@
+- name: Install dependencies
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items:
+    - dirmngr
+
+- name: Add Chainflip apt key
+  ansible.builtin.apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: "{{ chainflip_apt_repository_key_id }}"
+
+- name: Add apt repository into sources list
+  ansible.builtin.apt_repository:
+    repo: >-
+      deb {{ chainflip_apt_repository_url }}/{{ chainflip_release }}/ {{ ubuntu_release }} main
+    state: present
+
+- name: Debug | Apt Repo
+  ansible.builtin.debug:
+    msg: "Using APT repo: {{ chainflip_apt_repository_url }}/{{ chainflip_release }}/ {{ ubuntu_release }} main"
+  run_once: true
+
+- name: Install node packages
+  with_items: [chainflip-node, chainflip-cli]
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  register: node_installed
+  until: node_installed is successful
+  delay: 5
+  retries: 3
+
+- name: Install engine package
+  ansible.builtin.apt:
+    name: chainflip-engine
+    state: present
+    update_cache: true
+  register: engine_installed
+  until: engine_installed is successful
+  when:
+    - engine_enabled
+  delay: 5
+  retries: 3

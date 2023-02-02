@@ -1,0 +1,34 @@
+# /etc/systemd/system/chainflip-node.service.d/override.conf
+{{ ansible_managed | comment }}
+
+[Service]
+ExecStart=
+ExecStart=/usr/bin/chainflip-node --base-path={{ node_chaindata_path }} \
+--node-key-file={{ node_p2p_key_file  }} \
+--chain={{ node_chainspec_file }} \
+{% if node_dev_mode == true %}
+--dev \
+{% endif %}
+{% if node_validator == true %}
+--validator \
+{% endif %}
+{% if node_archive == true %}
+--pruning=archive \
+{% endif %}
+{% if node_bootnodes is defined and ( node_bootnodes | length > 0)  %}
+--bootnodes={{ node_bootnodes }} \
+{% endif %}
+{% if node_rpc_cors is defined and ( node_rpc_cors | length > 0)  %}
+--node_rpc_cors={{ node_rpc_cors }} \
+{% endif %}
+{% if node_in_peers is defined and ( node_in_peers | length > 0)  %}
+--node_in_peers={{ node_in_peers }} \
+{% endif %}
+{% if node_out_peers is defined and ( node_out_peers | length > 0)  %}
+--node_out_peers={{ node_out_peers }} \
+{% endif %}
+{% if node_prometheus_external == true %}
+--prometheus-external \
+{% endif %}
+--rpc-port={{ node_rpc_port }} \
+--state-cache-size={{ node_state_cache_size }}

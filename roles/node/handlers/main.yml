@@ -1,0 +1,11 @@
+---
+- name: Restart chainflip-engine
+  ansible.builtin.systemd:
+    name: chainflip-engine
+    state: restarted
+
+- name: Restart chainflip-node
+  ansible.builtin.systemd:
+    name: chainflip-node
+    daemon_reload: true
+    state: restarted

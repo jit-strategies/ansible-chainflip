@@ -1,0 +1,26 @@
+{{ ansible_managed | comment }}
+
+[node_p2p]
+node_key_file = "{{ node_p2p_key_file }}"
+ip_address = "{{ ipify_public_ip  }}"
+port = "{{ engine_p2p_port }}"
+
+[state_chain]
+ws_endpoint = "{{ engine_state_chain_ws_endpoint }}"
+signing_key_file = "{{ engine_state_chain_signing_key_file }}"
+
+[eth]
+ws_node_endpoint = "{{ engine_eth_ws_node_endpoint }}"
+http_node_endpoint = "{{ engine_eth_http_node_endpoint }}"
+private_key_file = "{{ engine_eth_private_key_file }}"
+
+
+[health_check]
+hostname = "{{ engine_health_check_host }}"
+port = "{{ engine_health_check_port }}"
+
+[signing]
+db_file = "{{ engine_signing_db_file_name }}"
+
+[dot]
+polkadot_rpc_ws_endpoint = "{{ engine_polkadot_rpc_ws }}"

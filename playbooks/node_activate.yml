@@ -1,0 +1,37 @@
+---
+- name: Provision validator
+  hosts: all
+  gather_facts: true
+  become: true
+  vars:
+    vanity_name: "Ansible Validator"
+  tasks:
+    - name: Register account as validator
+      ansible.builtin.include_role:
+        name: jitstrategies.chainflip.cli
+      vars:
+        command: register-account-role Validator
+    - name: Pause between calls
+      ansible.builtin.pause:
+        seconds: 7
+    - name: Rotate keys
+      ansible.builtin.include_role:
+        name: jitstrategies.chainflip.cli
+      vars:
+        command: rotate
+    - name: Pause between calls
+      ansible.builtin.pause:
+        seconds: 7
+    - name: Activate validator
+      ansible.builtin.include_role:
+        name: jitstrategies.chainflip.cli
+      vars:
+        command: activate
+    - name: Pause between calls
+      ansible.builtin.pause:
+        seconds: 7
+    - name: Set vanity name
+      ansible.builtin.include_role:
+        name: jitstrategies.chainflip.cli
+      vars:
+        command: vanity-name {{ vanity_name }}

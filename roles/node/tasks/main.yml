@@ -1,0 +1,32 @@
+---
+- name: Install packages
+  ansible.builtin.include_tasks:
+    file: debian.yml
+  when:
+    - ansible_os_family == 'Debian'
+
+- name: Configure node
+  ansible.builtin.include_tasks:
+    file: configure-node.yml
+
+- name: Flush node handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Configure engine
+  ansible.builtin.include_tasks:
+    file: configure-engine.yml
+  when:
+    - engine_enabled
+
+- name: Flush engine handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Run health checks
+  ansible.builtin.include_tasks:
+    file: health-check.yml
+  when:
+    - health_check
+
+- name: Show outputs
+  ansible.builtin.include_tasks:
+    file: outputs.yml

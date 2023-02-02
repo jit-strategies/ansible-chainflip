@@ -1,0 +1,30 @@
+---
+
+dependency:
+  name: galaxy
+driver:
+  name: podman
+platforms:
+  - name: validator01
+    image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    # volumes:
+    #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+  # - name: validator02
+  #   image: geerlingguy/docker-ubuntu2004-ansible:latest
+  #   command: ${MOLECULE_DOCKER_COMMAND:-""}
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  #   privileged: true
+  #   pre_build_image: true
+provisioner:
+  name: ansible
+  # log: false
+  env:
+    ANSIBLE_ROLES_PATH: "../../roles"
+  # inventory:
+
+verifier:
+  name: ansible
