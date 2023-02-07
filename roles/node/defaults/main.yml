@@ -23,7 +23,6 @@ node_rpc_port: 9933
 
 engine_enabled: true
 engine_generate_eth_key: false
-# engine_eth_private_key: "482fd89c4cdcdfe5e84c8ead352a0d7effe867c677e2f4c235ca87a3f76a9ba4"
 # [node_p2p]
 engine_p2p_key_file: "{{ node_p2p_key_file }}"
 engine_p2p_port: 8078
