@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  role_name: node
+  author: jitstrategies
+  description: Role to setup Chainflip nodes
+  company: JIT Strategies
+  license: Apache-2.0
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+  galaxy_tags:
+    - chainflip
+    - dex
+    - p2p
+dependencies: []

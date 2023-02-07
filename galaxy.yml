@@ -13,8 +13,8 @@ tags:
   - dex
 dependencies:
   community.general: ">=6.1.0"
-repository: https://github.com/jit-strategies/chainflip-ansible-collection
+repository: https://github.com/jit-strategies/ansible-chainflip
 documentation: https://docs.chainflip.io
-homepage: https://chainflip.io
-issues: https://github.com/jit-strategies/chainflip-ansible-collection/issues
+homepage: https://jitstrategies.com
+issues: https://github.com/jit-strategies/ansible-chainflip/issues
 build_ignore: []
