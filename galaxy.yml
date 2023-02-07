@@ -7,7 +7,6 @@ authors:
 description: A collection of roles to deploy and manage Chainflip nodes.
 license:
   - Apache-2.0
-license_file: LICENSE
 tags:
   - blockchain
   - dex
@@ -17,4 +16,8 @@ repository: https://github.com/jit-strategies/ansible-chainflip
 documentation: https://docs.chainflip.io
 homepage: https://jitstrategies.com
 issues: https://github.com/jit-strategies/ansible-chainflip/issues
-build_ignore: []
+build_ignore:
+  - .ansible-lint
+  - .github
+  - .gitignore
+  - requirements.txt
