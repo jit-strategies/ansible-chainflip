@@ -8,4 +8,3 @@
   until: result.rc == 0
   delay: "{{ delay }}"
   retries: "{{ retries }}"
-  ignore_errors: "{{ ignore_errors }}"

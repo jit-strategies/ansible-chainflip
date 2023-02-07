@@ -5,4 +5,3 @@ delay: 6
 config_path: "/etc/chainflip/config/Default.toml"
 signing_key_file: "/etc/chainflip/keys/signing_key_file"
 ws_endpoint: "ws://127.0.0.1:9944"
-ignore_errors: false
