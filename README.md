@@ -8,7 +8,6 @@ This collection contains roles and playbooks to deploy and manage Chainflip node
 
 - Chainflip blockchain node deployment (includes State Chain node and Engine).
 - Run arbitrary commands using CLI role
-- Backup keys and configuration (TBD)
 
 ## Requirements
 
