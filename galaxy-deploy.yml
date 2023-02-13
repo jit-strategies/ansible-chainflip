@@ -17,29 +17,29 @@
   vars:
     namespace: jitstrategies
     collection: chainflip
-    # Requires github_tag to be set when calling playbook.
     release_tag: "{{ github_tag.split('/')[-1] }}"
 
   pre_tasks:
     - name: Ensure ANSIBLE_GALAXY_TOKEN is set.
-      fail:
+      ansible.builtin.fail:
         msg: A valid ANSIBLE_GALAXY_TOKEN must be set.
-      when: "lookup('env','ANSIBLE_GALAXY_TOKEN') | length == 0"
+      when: "lookup('env', 'ANSIBLE_GALAXY_TOKEN') | length == 0"
 
     - name: Ensure the ~/.ansible directory exists.
-      file:
+      ansible.builtin.file:
         path: ~/.ansible
         state: directory
 
     - name: Write the Galaxy token to ~/.ansible/galaxy_token
-      copy:
+      ansible.builtin.copy:
         content: |
-          token: {{ lookup('env','ANSIBLE_GALAXY_TOKEN') }}
+          token: {{ lookup('env', 'ANSIBLE_GALAXY_TOKEN') }}
         dest: ~/.ansible/galaxy_token
+        mode: 0666
 
   tasks:
     - name: Ensure the galaxy.yml tag is up to date.
-      lineinfile:
+      ansible.builtin.lineinfile:
         path: galaxy.yml
         regexp: "^version:"
         line: 'version: "{{ release_tag }}"'
