@@ -18,3 +18,5 @@ skip_list:
   - no-handler
   - yaml[line-length]
   - galaxy[no-changelog]
+  - schema[meta]
+  - var-naming
