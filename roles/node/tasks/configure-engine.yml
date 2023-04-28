@@ -63,7 +63,7 @@
 
 - name: Create chainflip-engine config file
   ansible.builtin.template:
-    dest: "/etc/chainflip/config/Default.toml"
-    src: Default.toml.j2
+    dest: "{{ engine_config_file }}"
+    src: Settings.toml.j2
     mode: "0600"
   notify: Restart chainflip-engine

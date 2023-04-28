@@ -23,6 +23,7 @@ node_rpc_port: 9933
 
 engine_enabled: true
 engine_generate_eth_key: false
+engine_config_file: "/etc/chainflip/config/Settings.toml"
 # [node_p2p]
 engine_p2p_key_file: "{{ node_p2p_key_file }}"
 engine_p2p_port: 8078
