@@ -1,7 +1,7 @@
 ---
 - name: Create chainflip keys directory
   ansible.builtin.file:
-    path: /etc/chainflip/keys/
+    path: "{{ engine_config_path }}/keys/"
     state: directory
     mode: "0700"
 
@@ -30,6 +30,11 @@
     mode: "0755"
   when:
     - node_systemd_override
+
+- name: Make sure chainflip-node is enabled
+  ansible.builtin.systemd:
+    name: chainflip-node
+    enabled: true
 
 - name: Create chainflip-node systemd override file
   ansible.builtin.template:

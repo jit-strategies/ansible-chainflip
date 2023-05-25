@@ -52,7 +52,7 @@
 
 - name: Create chainflip config directory
   ansible.builtin.file:
-    path: /etc/chainflip/config/
+    path: "{{ engine_config_path }}/config/"
     state: directory
     mode: "0700"
 
@@ -60,6 +60,11 @@
   community.general.ipify_facts:
     timeout: 20
   retries: 3
+
+- name: Make sure chainflip-engine is enabled
+  ansible.builtin.systemd:
+    name: chainflip-engine
+    enabled: true
 
 - name: Create chainflip-engine config file
   ansible.builtin.template:
