@@ -27,6 +27,9 @@ node_rpc_port: 9933
 
 engine_enabled: true
 engine_generate_eth_key: false
+engine_debug: false
+engine_debug_target: "chainflip_engine=debug"
+engine_use_journal: false
 engine_config_file: "{{ config_path }}/config/Settings.toml"
 # [node_p2p]
 engine_p2p_key_file: "{{ node_p2p_key_file }}"
