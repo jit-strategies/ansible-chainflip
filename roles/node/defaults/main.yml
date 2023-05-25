@@ -11,6 +11,8 @@ node_chaindata_path: "{{ config_path }}/chaindata"
 node_chainspec_file: "{{ config_path }}/chainspecs/{{ chainflip_chain }}.json"
 node_p2p_key_file: "{{ config_path }}/keys/node_key_file"
 node_systemd_override: true
+node_disable_mdns: false
+node_sync_mode: "full" # full, fast, fast-unsafe, warp
 node_dev_mode: false
 node_validator: true
 node_archive: false

@@ -12,6 +12,9 @@ ExecStart=/usr/bin/chainflip-node --base-path={{ node_chaindata_path }} \
 {% if node_validator == true %}
 --validator \
 {% endif %}
+{% if node_sync_mode != 'full' %}
+--sync {{ node_sync_mode }} \
+{% endif %}
 {% if node_archive == true %}
 --pruning=archive \
 {% endif %}
@@ -29,6 +32,9 @@ ExecStart=/usr/bin/chainflip-node --base-path={{ node_chaindata_path }} \
 {% endif %}
 {% if node_prometheus_external == true %}
 --prometheus-external \
+{% endif %}
+{% if node_disable_mdns == true %}
+--no-mdns \
 {% endif %}
 --rpc-port={{ node_rpc_port }} \
 --trie-cache-size={{ node_trie_cache_size }}
