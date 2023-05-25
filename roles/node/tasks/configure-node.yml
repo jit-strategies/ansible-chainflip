@@ -1,7 +1,7 @@
 ---
 - name: Create chainflip keys directory
   ansible.builtin.file:
-    path: "{{ engine_config_path }}/keys/"
+    path: "{{ config_path }}/keys/"
     state: directory
     mode: "0700"
 

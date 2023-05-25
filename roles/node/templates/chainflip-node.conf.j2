@@ -6,14 +6,12 @@ ExecStart=
 ExecStart=/usr/bin/chainflip-node --base-path={{ node_chaindata_path }} \
 --node-key-file={{ node_p2p_key_file  }} \
 --chain={{ node_chainspec_file }} \
+--sync={{ node_sync_mode }} \
 {% if node_dev_mode == true %}
 --dev \
 {% endif %}
 {% if node_validator == true %}
 --validator \
-{% endif %}
-{% if node_sync_mode != 'full' %}
---sync {{ node_sync_mode }} \
 {% endif %}
 {% if node_archive == true %}
 --pruning=archive \
