@@ -31,11 +31,6 @@
   when:
     - node_systemd_override
 
-- name: Make sure chainflip-node is enabled
-  ansible.builtin.systemd:
-    name: chainflip-node
-    enabled: true
-
 - name: Create chainflip-node systemd override file
   ansible.builtin.template:
     dest: "/etc/systemd/system/chainflip-node.service.d/override.conf"
@@ -45,3 +40,8 @@
     - Restart chainflip-node
   when:
     - node_systemd_override
+
+- name: Make sure chainflip-node is enabled
+  ansible.builtin.systemd:
+    name: chainflip-node
+    enabled: true

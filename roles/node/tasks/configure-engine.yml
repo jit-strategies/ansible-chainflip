@@ -61,6 +61,24 @@
     timeout: 20
   retries: 3
 
+- name: Create chainflip-engine systemd override directory
+  ansible.builtin.file:
+    path: /etc/systemd/system/chainflip-engine.service.d
+    state: directory
+    mode: "0755"
+  when:
+    - engine_systemd_override
+
+- name: Create chainflip-engine systemd override file
+  ansible.builtin.template:
+    dest: "/etc/systemd/system/chainflip-engine.service.d/override.conf"
+    src: chainflip-engine.conf.j2
+    mode: "0600"
+  notify:
+    - Restart chainflip-engine
+  when:
+    - engine_systemd_override
+
 - name: Make sure chainflip-engine is enabled
   ansible.builtin.systemd:
     name: chainflip-engine
