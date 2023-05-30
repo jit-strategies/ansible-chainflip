@@ -17,7 +17,7 @@ node_dev_mode: false
 node_validator: true
 node_archive: false
 node_prometheus_external: false
-node_trie_cache_size: 0
+node_state_cache_size: 0
 node_use_journal: false
 node_bootnodes: ""
 node_rpc_cors: ""
