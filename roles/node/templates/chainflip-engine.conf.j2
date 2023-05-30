@@ -1,0 +1,11 @@
+# /etc/systemd/system/chainflip-engine.service.d/override.conf
+{{ ansible_managed | comment }}
+
+[Service]
+{% if engine_debug == true %}
+Environment="RUST_LOG={{ engine_debug_target }}"
+{% endif %}
+{% if engine_use_journal == true %}
+StandardError=journal
+StandardOutput=journal
+{% endif %}

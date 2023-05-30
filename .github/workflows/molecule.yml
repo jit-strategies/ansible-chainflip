@@ -21,7 +21,7 @@ jobs:
             ansible-lint
             flake8
             molecule[lint]
-            molecule[podman]
+            molecule-plugins[podman]
       - name: Checkout code 🏁
         uses: actions/checkout@v3
       - name: Molecule test ⚛️

@@ -5,16 +5,19 @@ chainflip_release: "{{ chainflip_chain }}"
 chainflip_apt_repository_url: https://repo.chainflip.io
 chainflip_apt_repository_key_id: FB3E88547C6B47C6
 health_check: true
+config_path: "/etc/chainflip"
 
-node_chaindata_path: "/etc/chainflip/chaindata"
-node_chainspec_file: "/etc/chainflip/chainspecs/{{ chainflip_chain }}.json"
-node_p2p_key_file: "/etc/chainflip/keys/node_key_file"
+node_chaindata_path: "{{ config_path }}/chaindata"
+node_chainspec_file: "{{ config_path }}/chainspecs/{{ chainflip_chain }}.json"
+node_p2p_key_file: "{{ config_path }}/keys/node_key_file"
 node_systemd_override: true
+node_disable_mdns: false
+node_sync_mode: "full" # full, fast, fast-unsafe, warp
 node_dev_mode: false
 node_validator: true
 node_archive: false
 node_prometheus_external: false
-node_trie_cache_size: 0
+node_state_cache_size: 0
 node_use_journal: false
 node_bootnodes: ""
 node_rpc_cors: ""
@@ -24,17 +27,21 @@ node_rpc_port: 9933
 
 engine_enabled: true
 engine_generate_eth_key: false
-engine_config_file: "/etc/chainflip/config/Settings.toml"
+engine_systemd_override: true
+engine_debug: false
+engine_debug_target: "chainflip_engine=debug"
+engine_use_journal: false
+engine_config_file: "{{ config_path }}/config/Settings.toml"
 # [node_p2p]
 engine_p2p_key_file: "{{ node_p2p_key_file }}"
 engine_p2p_port: 8078
 # [state_chain]
 engine_state_chain_ws_endpoint: ws://127.0.0.1:9944
-engine_state_chain_signing_key_file: "/etc/chainflip/keys/signing_key_file"
+engine_state_chain_signing_key_file: "{{ config_path }}/keys/signing_key_file"
 # [eth]
 engine_eth_ws_node_endpoint: "ws://127.0.0.1:8080"
 engine_eth_http_node_endpoint: "http://127.0.0.1:8080"
-engine_eth_private_key_file: "/etc/chainflip/keys/ethereum_key_file"
+engine_eth_private_key_file: "{{ config_path }}/keys/ethereum_key_file"
 # [health]
 engine_health_check_host: 127.0.0.1
 engine_health_check_port: "5555"
