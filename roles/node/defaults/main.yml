@@ -1,6 +1,5 @@
 ---
 chainflip_chain: perseverance
-ubuntu_release: focal
 chainflip_release: "{{ chainflip_chain }}"
 chainflip_apt_repository_url: https://repo.chainflip.io
 chainflip_apt_repository_key_id: FB3E88547C6B47C6
@@ -8,7 +7,7 @@ health_check: true
 config_path: "/etc/chainflip"
 
 node_chaindata_path: "{{ config_path }}/chaindata"
-node_chainspec_file: "{{ config_path }}/chainspecs/{{ chainflip_chain }}.json"
+node_chainspec_file: "{{ config_path }}/{{ chainflip_chain }}.chainspec.json"
 node_p2p_key_file: "{{ config_path }}/keys/node_key_file"
 node_systemd_override: true
 node_disable_mdns: false
@@ -47,5 +46,9 @@ engine_health_check_host: 127.0.0.1
 engine_health_check_port: "5555"
 # [db]
 engine_signing_db_file_name: data.db
-# [db]
-engine_polkadot_rpc_ws: "ws://127.0.0.1:8081"
+# [dot]
+engine_polkadot_rpc_ws: "wss://pdot.chainflip.io:443"
+# [btc]
+engine_btc_http_node_endpoint: "http://a108a82b574a640359e360cf66afd45d-424380952.eu-central-1.elb.amazonaws.com"
+engine_btc_rpc_user: "flip"
+engine_btc_rpc_password: "flip"

@@ -59,7 +59,7 @@
 - name: Get public IP from external service
   community.general.ipify_facts:
     timeout: 20
-  retries: 3
+  retries: 6
 
 - name: Create chainflip-engine systemd override directory
   ansible.builtin.file:
