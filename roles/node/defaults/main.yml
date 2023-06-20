@@ -1,6 +1,5 @@
 ---
 chainflip_chain: perseverance
-ubuntu_release: focal
 chainflip_release: "{{ chainflip_chain }}"
 chainflip_apt_repository_url: https://repo.chainflip.io
 chainflip_apt_repository_key_id: FB3E88547C6B47C6
