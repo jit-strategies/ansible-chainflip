@@ -75,6 +75,7 @@
     src: chainflip-engine.conf.j2
     mode: "0600"
   notify:
+    - Daemon reload
     - Restart chainflip-engine
   when:
     - engine_systemd_override
