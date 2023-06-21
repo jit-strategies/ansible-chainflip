@@ -37,8 +37,8 @@
     src: chainflip-node.conf.j2
     mode: "0600"
   notify:
-    - Daemon reload
     - Restart chainflip-node
+    - Journal restart
   when:
     - node_systemd_override
 

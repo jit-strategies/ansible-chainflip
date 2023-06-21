@@ -1,14 +1,17 @@
 ---
-- name: Daemon reload
-  ansible.builtin.systemd:
-    daemon_reload: true
-
 - name: Restart chainflip-engine
   ansible.builtin.systemd:
     name: chainflip-engine
+    daemon_reload: true
     state: restarted
 
 - name: Restart chainflip-node
   ansible.builtin.systemd:
     name: chainflip-node
+    daemon_reload: true
+    state: restarted
+
+- name: Journal restart
+  ansible.builtin.systemd:
+    name: systemd-journald
     state: restarted
