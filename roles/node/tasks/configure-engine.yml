@@ -60,6 +60,9 @@
   community.general.ipify_facts:
     timeout: 20
   retries: 6
+  delay: 3
+  register: ipify_result
+  until: ipify_result is succeeded
 
 - name: Create chainflip-engine systemd override directory
   ansible.builtin.file:
