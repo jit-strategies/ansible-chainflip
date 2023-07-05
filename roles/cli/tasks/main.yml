@@ -2,8 +2,7 @@
 - name: Run command {{ command }}
   ansible.builtin.shell:
     cmd: >
-      echo "y" | chainflip-cli --config-path "{{ config_path }}" --state_chain.signing_key_file "{{ signing_key_file }}" --state_chain.ws_endpoint
-      "{{ ws_endpoint }}" {{ command }}
+      echo "y" | chainflip-cli --config-root "{{ config_root }}" {{ command }}
   register: result
   until: result.rc == 0
   delay: "{{ delay }}"
