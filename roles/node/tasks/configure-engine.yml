@@ -4,50 +4,28 @@
     path: "{{ engine_state_chain_signing_key_file }}"
   register: sc_validator_key_file
 
-- name: Generate new Sr25519 (Aura) key
-  no_log: true
-  register: validator_keys
-  ansible.builtin.command:
-    cmd: chainflip-node key generate --output-type json
-  when: not sc_validator_key_file.stat.exists
-
 - name: Create signing key file
   no_log: true
   ansible.builtin.copy:
     dest: "{{ engine_state_chain_signing_key_file }}"
-    content: "{{ (validator_keys.stdout | from_json).secretSeed | replace('0x', '') }}"
+    content: "{{ (validator_keys.stdout | from_json).signing_key.secret_key }}"
     mode: "600"
   when: not sc_validator_key_file.stat.exists
-
-- name: Save generated address as fact
-  ansible.builtin.set_fact:
-    generated_ss58Address: "{{ (validator_keys.stdout | from_json).ss58Address }}"
-  when: not sc_validator_key_file.stat.exists
+  register: create_signing_key_file
 
 - name: Check eth key exists
   ansible.builtin.stat:
     path: "{{ engine_eth_private_key_file }}"
   register: eth_key_file
 
-- name: Generate new ethereum private key
+- name: Create new ethereum private key
   no_log: true
   ansible.builtin.copy:
     dest: "{{ engine_eth_private_key_file }}"
-    content: "{{ lookup('ansible.builtin.password', '/dev/null chars=hexdigits length=64') | lower }}"
+    content: "{{ (validator_keys.stdout | from_json).ethereum_key.secret_key }}"
     mode: "600"
   when:
     - engine_generate_eth_key
-    - not eth_key_file.stat.exists
-
-- name: Copy provided ethereum private key
-  no_log: true
-  ansible.builtin.copy:
-    dest: "{{ engine_eth_private_key_file }}"
-    content: "{{ engine_eth_private_key }}"
-    mode: "600"
-  when:
-    - engine_eth_private_key is defined and (engine_eth_private_key | length > 0)
-    - not engine_generate_eth_key
     - not eth_key_file.stat.exists
 
 - name: Create chainflip config directory

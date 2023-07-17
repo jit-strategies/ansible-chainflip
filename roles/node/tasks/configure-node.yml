@@ -10,18 +10,15 @@
     path: "{{ node_p2p_key_file }}"
   register: node_key_file
 
-- name: Generate node keys
-  register: node_key
+- name: Create new node P2P key
   no_log: true
-  ansible.builtin.command:
-    cmd: chainflip-node key generate-node-key --file "{{ node_p2p_key_file }}"
-    creates: "{{ node_p2p_key_file }}"
+  ansible.builtin.copy:
+    dest: "{{ node_p2p_key_file }}"
+    content: "{{ (validator_keys.stdout | from_json).node_key.secret_key }}"
+    mode: "600"
   notify: Restart chainflip-node
-
-- name: Save generated P2P address as fact
-  ansible.builtin.set_fact:
-    generated_P2PAddress: "{{ node_key.stderr }}"
-  when: not node_key_file.stat.exists
+  when:
+    - not node_key_file.stat.exists
 
 - name: Create chainflip-node systemd override directory
   ansible.builtin.file:

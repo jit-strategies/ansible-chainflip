@@ -22,7 +22,7 @@
     msg: "Using APT repo: {{ chainflip_apt_repository_url }}/{{ chainflip_release }}/{{ ansible_distribution_release }} {{ ansible_distribution_release }} main"
   run_once: true
 
-- name: Install node packages
+- name: Install node and cli packages
   with_items: [chainflip-node, chainflip-cli]
   ansible.builtin.apt:
     name: "{{ item }}"
@@ -44,3 +44,15 @@
     - engine_enabled
   delay: 5
   retries: 3
+
+- name: Generate new keys with cli
+  no_log: true
+  register: validator_keys
+  ansible.builtin.command:
+    cmd: chainflip-cli generate-keys json
+  changed_when: false
+
+- name: Save generated address as fact
+  ansible.builtin.set_fact:
+    generated_ss58Address: "{{ (validator_keys.stdout | from_json).signing_account_id }}"
+  changed_when: false
