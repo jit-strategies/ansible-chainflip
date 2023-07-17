@@ -1,9 +1,5 @@
-- name: Print the P2P pubkey
-  ansible.builtin.debug:
-    msg: "Node configured with P2P public key: {{ generated_P2PAddress }}"
-  when: generated_P2PAddress is defined
-
 - name: Print the SS58 address
   ansible.builtin.debug:
     msg: "Node engine configured with SS58 address: {{ generated_ss58Address }}"
-  when: generated_ss58Address is defined
+  when:
+    - create_signing_key_file.changed
