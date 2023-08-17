@@ -35,7 +35,8 @@ ExecStart=/usr/bin/chainflip-node --base-path={{ node_chaindata_path }} \
 --no-mdns \
 {% endif %}
 --rpc-port={{ node_rpc_port }} \
---state-cache-size={{ node_state_cache_size }}
+--state-cache-size={{ node_state_cache_size }} \
+{{ node_extra_args }}
 
 {% if node_use_journal == true %}
 StandardError=journal
