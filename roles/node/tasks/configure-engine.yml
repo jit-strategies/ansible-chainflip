@@ -56,6 +56,7 @@
     src: chainflip-engine.conf.j2
     mode: "0600"
   notify:
+    - Force daemon config reload
     - Restart chainflip-engine
     - Journal restart
   when:

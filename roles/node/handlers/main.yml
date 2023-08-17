@@ -1,4 +1,8 @@
 ---
+- name: Force daemon config reload
+  ansible.builtin.systemd:
+    daemon_reload: true
+
 - name: Restart chainflip-engine
   ansible.builtin.systemd:
     name: chainflip-engine
@@ -15,3 +19,4 @@
   ansible.builtin.systemd:
     name: systemd-journald
     state: restarted
+

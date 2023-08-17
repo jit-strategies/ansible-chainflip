@@ -34,6 +34,7 @@
     src: chainflip-node.conf.j2
     mode: "0600"
   notify:
+    - Force daemon config reload
     - Restart chainflip-node
     - Journal restart
   when:
