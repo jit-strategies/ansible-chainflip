@@ -28,6 +28,16 @@
     - engine_generate_eth_key
     - not eth_key_file.stat.exists
 
+- name: Create new ethereum private key
+  no_log: true
+  ansible.builtin.copy:
+    dest: "{{ engine_eth_address_file }}"
+    content: "0x{{ (validator_keys.stdout | from_json).ethereum_address }}"
+    mode: "600"
+  when:
+    - engine_generate_eth_key
+    - not eth_key_file.stat.exists
+
 - name: Create chainflip config directory
   ansible.builtin.file:
     path: "{{ config_path }}/config/"
