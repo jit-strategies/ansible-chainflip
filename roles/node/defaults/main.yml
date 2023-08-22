@@ -42,6 +42,7 @@ engine_state_chain_signing_key_file: "{{ config_path }}/keys/signing_key_file"
 engine_eth_ws_node_endpoint: "ws://127.0.0.1:8080"
 engine_eth_http_node_endpoint: "http://127.0.0.1:8080"
 engine_eth_private_key_file: "{{ config_path }}/keys/ethereum_key_file"
+engine_eth_address_file: "{{ config_path }}/keys/ethereum_address"
 # [health]
 engine_health_check_host: 127.0.0.1
 engine_health_check_port: "5555"
