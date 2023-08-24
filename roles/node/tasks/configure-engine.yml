@@ -27,6 +27,7 @@
   when:
     - engine_generate_eth_key
     - not eth_key_file.stat.exists
+  register: create_ethereum_key_file
 
 - name: Create new ethereum private key
   no_log: true
