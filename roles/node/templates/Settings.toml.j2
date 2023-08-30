@@ -19,10 +19,11 @@ hostname = "{{ engine_health_check_host }}"
 port = "{{ engine_health_check_port }}"
 
 [signing]
-db_file = "{{ engine_signing_db_file_name }}"
+db_file = "{{ engine_signing_db_path }}"
 
 [dot]
-ws_node_endpoint = "{{ engine_polkadot_rpc_ws }}"
+ws_node_endpoint = "{{ engine_polkadot_ws_node_endpoint }}"
+http_node_endpoint = "{{ engine_polkadot_http_node_endpoint }}"
 
 [btc]
 http_node_endpoint = "{{ engine_btc_http_node_endpoint }}"

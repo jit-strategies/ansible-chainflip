@@ -20,7 +20,7 @@ node_state_cache_size: 0
 node_use_journal: false
 node_bootnodes: ""
 node_rpc_cors: ""
-node_rpc_port: 9933
+node_rpc_port: 9944
 node_extra_args: ""
 # node_in_peers: 200
 # node_out_peers: 200
@@ -36,7 +36,7 @@ engine_config_file: "{{ config_path }}/config/Settings.toml"
 engine_p2p_key_file: "{{ node_p2p_key_file }}"
 engine_p2p_port: 8078
 # [state_chain]
-engine_state_chain_ws_endpoint: ws://127.0.0.1:9944
+engine_state_chain_ws_endpoint: "ws://127.0.0.1:9944"
 engine_state_chain_signing_key_file: "{{ config_path }}/keys/signing_key_file"
 # [eth]
 engine_eth_ws_node_endpoint: "ws://127.0.0.1:8080"
@@ -47,9 +47,10 @@ engine_eth_address_file: "{{ config_path }}/keys/ethereum_address"
 engine_health_check_host: 127.0.0.1
 engine_health_check_port: "5555"
 # [db]
-engine_signing_db_file_name: data.db
+engine_signing_db_path: "{{ config_path }}/data.db"
 # [dot]
-engine_polkadot_rpc_ws: "wss://pdot.chainflip.io:443"
+engine_polkadot_ws_node_endpoint: "wss://rpc-pdot.chainflip.xyz:443"
+engine_polkadot_http_node_endpoint: "https://rpc-pdot.chainflip.io:443"
 # [btc]
 engine_btc_http_node_endpoint: "http://a108a82b574a640359e360cf66afd45d-424380952.eu-central-1.elb.amazonaws.com"
 engine_btc_rpc_user: "flip"
