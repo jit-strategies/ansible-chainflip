@@ -13,6 +13,15 @@
   when: not sc_validator_key_file.stat.exists
   register: create_signing_key_file
 
+- name: Create SS58 address file
+  no_log: true
+  ansible.builtin.copy:
+    dest: "{{ engine_state_chain_ss58_address_file }}"
+    content: "{{ generated_ss58Address }}\n"
+    mode: "600"
+  when: not sc_validator_key_file.stat.exists
+  register: create_signing_ss58_address_file
+
 - name: Check eth key exists
   ansible.builtin.stat:
     path: "{{ engine_eth_private_key_file }}"
@@ -29,11 +38,11 @@
     - not eth_key_file.stat.exists
   register: create_ethereum_key_file
 
-- name: Create new ethereum private key
+- name: Create ethereum address flie
   no_log: true
   ansible.builtin.copy:
     dest: "{{ engine_eth_address_file }}"
-    content: "0x{{ (validator_keys.stdout | from_json).ethereum_address }}"
+    content: "0x{{ (validator_keys.stdout | from_json).ethereum_address }}\n"
     mode: "600"
   when:
     - engine_generate_eth_key

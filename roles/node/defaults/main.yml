@@ -38,6 +38,7 @@ engine_p2p_port: 8078
 # [state_chain]
 engine_state_chain_ws_endpoint: "ws://127.0.0.1:9944"
 engine_state_chain_signing_key_file: "{{ config_path }}/keys/signing_key_file"
+engine_state_chain_ss58_address_file: "{{ config_path }}/keys/ss58_address_file"
 # [eth]
 engine_eth_ws_node_endpoint: "ws://127.0.0.1:8080"
 engine_eth_http_node_endpoint: "http://127.0.0.1:8080"
