@@ -5,6 +5,8 @@ chainflip_apt_repository_url: https://repo.chainflip.io
 chainflip_apt_repository_key_id: FB3E88547C6B47C6
 health_check: true
 config_path: "/etc/chainflip"
+save_keys_json: false
+save_keys_json_file: "{{ config_path }}/keys/keys.json"
 
 node_chaindata_path: "{{ config_path }}/chaindata"
 node_chainspec_file: "{{ config_path }}/{{ chainflip_chain }}.chainspec.json"
@@ -56,3 +58,6 @@ engine_polkadot_http_node_endpoint: "https://rpc-pdot.chainflip.io:443"
 engine_btc_http_node_endpoint: "http://a108a82b574a640359e360cf66afd45d-424380952.eu-central-1.elb.amazonaws.com"
 engine_btc_rpc_user: "flip"
 engine_btc_rpc_password: "flip"
+# [prometheus]
+engine_prometheus_host: 127.0.0.1
+engine_prometheus_port: 5566

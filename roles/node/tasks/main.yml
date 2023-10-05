@@ -21,7 +21,7 @@
 - name: Flush engine handlers
   ansible.builtin.meta: flush_handlers
 
-- name: Run health checks
+- name: Run health check(s)
   ansible.builtin.include_tasks:
     file: health-check.yml
   when:

@@ -17,8 +17,20 @@
     content: "{{ (validator_keys.stdout | from_json).node_key.secret_key }}"
     mode: "600"
   notify: Restart chainflip-node
+  register: create_p2p_key_file
   when:
     - not node_key_file.stat.exists
+
+- name: Save keys JSON
+  no_log: true
+  ansible.builtin.copy:
+    dest: "{{ save_keys_json_file }}"
+    content: "{{ validator_keys.stdout }}"
+    mode: "600"
+    backup: true
+  when:
+    - save_keys_json
+    - create_p2p_key_file.changed
 
 - name: Create chainflip-node systemd override directory
   ansible.builtin.file:

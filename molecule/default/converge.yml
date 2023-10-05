@@ -8,3 +8,4 @@
       vars:
         node_archive: true
         engine_generate_eth_key: true
+        chainflip_chain: perseverance
