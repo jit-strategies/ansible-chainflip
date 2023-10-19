@@ -29,6 +29,7 @@ node_extra_args: ""
 # node_out_peers: 200
 
 engine_enabled: true
+engine_version: "0.10"
 engine_generate_eth_key: false
 engine_systemd_override: true
 engine_debug: false

@@ -17,15 +17,20 @@ port = "{{ engine_health_check_port }}"
 db_file = "{{ engine_signing_db_path }}"
 
 [eth]
-ws_node_endpoint = "{{ engine_eth_ws_node_endpoint }}"
-http_node_endpoint = "{{ engine_eth_http_node_endpoint }}"
 private_key_file = "{{ engine_eth_private_key_file }}"
 
-[dot]
+[eth.rpc]
+http_node_endpoint = "{{ engine_eth_http_node_endpoint }}"
+ws_node_endpoint = "{{ engine_eth_ws_node_endpoint }}"
+
+[eth.rpc_backup]
+
+
+[dot.rpc]
 ws_node_endpoint = "{{ engine_polkadot_ws_node_endpoint }}"
 http_node_endpoint = "{{ engine_polkadot_http_node_endpoint }}"
 
-[btc]
+[btc.rpc]
 http_node_endpoint = "{{ engine_btc_http_node_endpoint }}"
 rpc_user = "{{ engine_btc_rpc_user }}"
 rpc_password = "{{ engine_btc_rpc_password }}"
