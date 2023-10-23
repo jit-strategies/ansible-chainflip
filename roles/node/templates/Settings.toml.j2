@@ -3,38 +3,54 @@
 [node_p2p]
 node_key_file = "{{ node_p2p_key_file }}"
 ip_address = "{{ ipify_public_ip  }}"
-port = "{{ engine_p2p_port }}"
+port = "{{ engine_node_p2p_port }}"
 
 [state_chain]
 ws_endpoint = "{{ engine_state_chain_ws_endpoint }}"
 signing_key_file = "{{ engine_state_chain_signing_key_file }}"
 
-[health_check]
-hostname = "{{ engine_health_check_host }}"
-port = "{{ engine_health_check_port }}"
-
 [signing]
-db_file = "{{ engine_signing_db_path }}"
+db_file = "{{ engine_signing_db_file }}"
 
 [eth]
 private_key_file = "{{ engine_eth_private_key_file }}"
 
 [eth.rpc]
-http_node_endpoint = "{{ engine_eth_http_node_endpoint }}"
-ws_node_endpoint = "{{ engine_eth_ws_node_endpoint }}"
+http_endpoint = "{{ engine_eth_rpc_http_endpoint }}"
+ws_endpoint = "{{ engine_eth_rpc_ws_endpoint }}"
 
+{% if (engine_eth_rpc_backup_http_endpoint | length > 0) or (engine_eth_rpc_backup_ws_endpoint | length > 0)  %}
 [eth.rpc_backup]
-
+http_endpoint = "{{ engine_eth_rpc_backup_http_endpoint }}"
+ws_endpoint = "{{ engine_eth_rpc_backup_ws_endpoint }}"
+{% endif %}
 
 [dot.rpc]
-ws_node_endpoint = "{{ engine_polkadot_ws_node_endpoint }}"
-http_node_endpoint = "{{ engine_polkadot_http_node_endpoint }}"
+http_endpoint = "{{ engine_dot_rpc_http_endpoint }}"
+ws_endpoint = "{{ engine_dot_rpc_ws_endpoint }}"
+
+{% if (engine_dot_rpc_backup_http_endpoint | length > 0) or (engine_dot_rpc_backup_ws_endpoint | length > 0)  %}
+[dot.rpc_backup]
+http_endpoint = "{{ engine_dot_rpc_backup_http_endpoint }}"
+ws_endpoint = "{{ engine_dot_rpc_backup_ws_endpoint }}"
+{% endif %}
 
 [btc.rpc]
-http_node_endpoint = "{{ engine_btc_http_node_endpoint }}"
-rpc_user = "{{ engine_btc_rpc_user }}"
-rpc_password = "{{ engine_btc_rpc_password }}"
+http_endpoint = "{{ engine_btc_rpc_http_endpoint }}"
+basic_auth_user = "{{ engine_btc_rpc_basic_auth_user }}"
+basic_auth_password = "{{ engine_btc_rpc_basic_auth_password }}"
+
+{% if (engine_btc_rpc_backup_http_endpoint | length > 0)  %}
+[btc.rpc_backup]
+http_endpoint = "{{ engine_btc_rpc_backup_http_endpoint }}"
+basic_auth_user = "{{ engine_btc_rpc_backup_basic_auth_user }}"
+basic_auth_password = "{{ engine_btc_rpc_backup_basic_auth_password }}"
+{% endif %}
+
+[health_check]
+hostname = "{{ engine_health_check_hostname }}"
+port = "{{ engine_health_check_port }}"
 
 [prometheus]
-hostname =  "{{ engine_prometheus_host }}"
+hostname =  "{{ engine_prometheus_hostname }}"
 port =  "{{ engine_prometheus_port }}"

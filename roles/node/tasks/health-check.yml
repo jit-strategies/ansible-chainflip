@@ -18,4 +18,4 @@
   register: engine_result
   until: engine_result.status == 200
   ansible.builtin.uri:
-    url: "http://{{ engine_health_check_host }}:{{ engine_health_check_port }}/health"
+    url: "http://{{ engine_health_check_hostname }}:{{ engine_health_check_port }}/health"
