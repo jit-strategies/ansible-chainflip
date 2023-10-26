@@ -9,10 +9,6 @@
       ansible.builtin.command:
         cmd: chainflip-cli --help
 
-    - name: Run engine binary
-      ansible.builtin.command:
-        cmd: chainflip-engine --help
-
     - name: Run node binary
       ansible.builtin.command:
         cmd: chainflip-node -V
