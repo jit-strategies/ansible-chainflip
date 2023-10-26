@@ -29,6 +29,7 @@ node_extra_args: ""
 # node_out_peers: 200
 
 engine_enabled: true
+engine_version: "0.10"
 engine_generate_eth_key: false
 engine_systemd_override: true
 engine_debug: false
@@ -37,28 +38,39 @@ engine_use_journal: false
 engine_config_file: "{{ config_path }}/config/Settings.toml"
 # [node_p2p]
 engine_p2p_key_file: "{{ node_p2p_key_file }}"
-engine_p2p_port: 8078
+engine_node_p2p_port: 8078
 # [state_chain]
 engine_state_chain_ws_endpoint: "ws://127.0.0.1:9944"
 engine_state_chain_signing_key_file: "{{ config_path }}/keys/signing_key_file"
 engine_state_chain_ss58_address_file: "{{ config_path }}/keys/ss58_address_file"
+# [signing]
+engine_signing_db_file: "{{ config_path }}/data.db"
 # [eth]
-engine_eth_ws_node_endpoint: "ws://127.0.0.1:8080"
-engine_eth_http_node_endpoint: "http://127.0.0.1:8080"
 engine_eth_private_key_file: "{{ config_path }}/keys/ethereum_key_file"
 engine_eth_address_file: "{{ config_path }}/keys/ethereum_address"
-# [health]
-engine_health_check_host: 127.0.0.1
+# [eth.rpc]
+engine_eth_rpc_ws_endpoint: "ws://127.0.0.1:8080"
+engine_eth_rpc_http_endpoint: "http://127.0.0.1:8080"
+# [eth.rpc_backup]
+engine_eth_rpc_backup_ws_endpoint: ""
+engine_eth_rpc_backup_http_endpoint: ""
+# [dot.rpc]
+engine_dot_rpc_ws_endpoint: "wss://rpc-pdot.chainflip.xyz:443"
+engine_dot_rpc_http_endpoint: "https://rpc-pdot.chainflip.io:443"
+# [dot.rpc_backup]
+engine_dot_rpc_backup_ws_endpoint: ""
+engine_dot_rpc_backup_http_endpoint: ""
+# [btc.rpc]
+engine_btc_rpc_http_endpoint: "http://a108a82b574a640359e360cf66afd45d-424380952.eu-central-1.elb.amazonaws.com"
+engine_btc_rpc_basic_auth_user: "flip"
+engine_btc_rpc_basic_auth_password: "flip"
+# [btc.rpc_backup]
+engine_btc_rpc_backup_http_endpoint: ""
+engine_btc_rpc_backup_basic_auth_user: ""
+engine_btc_rpc_backup_basic_auth_bassword: ""
+# [health_check]
+engine_health_check_hostname: "127.0.0.1"
 engine_health_check_port: "5555"
-# [db]
-engine_signing_db_path: "{{ config_path }}/data.db"
-# [dot]
-engine_polkadot_ws_node_endpoint: "wss://rpc-pdot.chainflip.xyz:443"
-engine_polkadot_http_node_endpoint: "https://rpc-pdot.chainflip.io:443"
-# [btc]
-engine_btc_http_node_endpoint: "http://a108a82b574a640359e360cf66afd45d-424380952.eu-central-1.elb.amazonaws.com"
-engine_btc_rpc_user: "flip"
-engine_btc_rpc_password: "flip"
 # [prometheus]
-engine_prometheus_host: 127.0.0.1
+engine_prometheus_hostname: "127.0.0.1"
 engine_prometheus_port: 5566

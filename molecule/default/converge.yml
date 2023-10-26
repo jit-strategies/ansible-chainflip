@@ -6,6 +6,7 @@
       ansible.builtin.include_role:
         name: node
       vars:
-        node_archive: true
+        node_archive: false
+        node_validator: true
         engine_generate_eth_key: true
         chainflip_chain: perseverance

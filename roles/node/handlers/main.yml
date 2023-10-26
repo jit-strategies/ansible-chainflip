@@ -5,7 +5,7 @@
 
 - name: Restart chainflip-engine
   ansible.builtin.systemd:
-    name: chainflip-engine
+    name: chainflip-engine{{ engine_version }}
     daemon_reload: true
     state: restarted
 
