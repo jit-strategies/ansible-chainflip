@@ -19,20 +19,20 @@ private_key_file = "{{ engine_eth_private_key_file }}"
 http_endpoint = "{{ engine_eth_rpc_http_endpoint }}"
 ws_endpoint = "{{ engine_eth_rpc_ws_endpoint }}"
 
-{% if (engine_eth_rpc_backup_http_endpoint | length > 0) or (engine_eth_rpc_backup_ws_endpoint | length > 0)  %}
-[eth.rpc_backup]
-http_endpoint = "{{ engine_eth_rpc_backup_http_endpoint }}"
-ws_endpoint = "{{ engine_eth_rpc_backup_ws_endpoint }}"
+{% if (engine_eth_backup_rpc_http_endpoint | length > 0) or (engine_eth_backup_rpc_ws_endpoint | length > 0)  %}
+[eth.backup_rpc]
+http_endpoint = "{{ engine_eth_backup_rpc_http_endpoint }}"
+ws_endpoint = "{{ engine_eth_backup_rpc_ws_endpoint }}"
 {% endif %}
 
 [dot.rpc]
 http_endpoint = "{{ engine_dot_rpc_http_endpoint }}"
 ws_endpoint = "{{ engine_dot_rpc_ws_endpoint }}"
 
-{% if (engine_dot_rpc_backup_http_endpoint | length > 0) or (engine_dot_rpc_backup_ws_endpoint | length > 0)  %}
-[dot.rpc_backup]
-http_endpoint = "{{ engine_dot_rpc_backup_http_endpoint }}"
-ws_endpoint = "{{ engine_dot_rpc_backup_ws_endpoint }}"
+{% if (engine_dot_backup_rpc_http_endpoint | length > 0) or (engine_dot_backup_rpc_ws_endpoint | length > 0)  %}
+[dot.backup_rpc]
+http_endpoint = "{{ engine_dot_backup_rpc_http_endpoint }}"
+ws_endpoint = "{{ engine_dot_backup_rpc_ws_endpoint }}"
 {% endif %}
 
 [btc.rpc]
@@ -40,11 +40,11 @@ http_endpoint = "{{ engine_btc_rpc_http_endpoint }}"
 basic_auth_user = "{{ engine_btc_rpc_basic_auth_user }}"
 basic_auth_password = "{{ engine_btc_rpc_basic_auth_password }}"
 
-{% if (engine_btc_rpc_backup_http_endpoint | length > 0)  %}
-[btc.rpc_backup]
-http_endpoint = "{{ engine_btc_rpc_backup_http_endpoint }}"
-basic_auth_user = "{{ engine_btc_rpc_backup_basic_auth_user }}"
-basic_auth_password = "{{ engine_btc_rpc_backup_basic_auth_password }}"
+{% if (engine_btc_backup_rpc_http_endpoint | length > 0)  %}
+[btc.backup_rpc]
+http_endpoint = "{{ engine_btc_backup_rpc_http_endpoint }}"
+basic_auth_user = "{{ engine_btc_backup_rpc_basic_auth_user }}"
+basic_auth_password = "{{ engine_btc_backup_rpc_basic_auth_password }}"
 {% endif %}
 
 [health_check]
