@@ -1,6 +1,6 @@
 - name: Node Healthcheck
-  retries: 10
-  delay: 2
+  retries: 5
+  delay: 3
   register: node_result
   until: node_result.status == 200
   ansible.builtin.uri:
@@ -14,8 +14,8 @@
 
 # Disabled until fixed upstream
 # - name: Engine Healthcheck
-#   retries: 10
-#   delay: 2
+#   retries: 5
+#   delay: 3
 #   register: engine_result
 #   until: engine_result.status == 200
 #   ansible.builtin.uri:
