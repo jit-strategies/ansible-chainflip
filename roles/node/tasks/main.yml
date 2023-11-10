@@ -4,6 +4,11 @@
     file: debian.yml
   when:
     - ansible_os_family == 'Debian'
+    - not only_configure
+
+- name: Prepare facts
+  ansible.builtin.include_tasks:
+    file: prepare.yml
 
 - name: Configure node
   ansible.builtin.include_tasks:

@@ -4,6 +4,7 @@ chainflip_release: "{{ chainflip_chain }}"
 chainflip_apt_repository_url: https://repo.chainflip.io
 chainflip_apt_repository_key_id: FB3E88547C6B47C6
 health_check: true
+only_configure: false
 config_path: "/etc/chainflip"
 generate_keys_from_seed: false
 save_keys_json: false
