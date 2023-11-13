@@ -9,4 +9,4 @@
         node_archive: false
         node_validator: true
         engine_generate_eth_key: true
-        chainflip_chain: perseverance
+        chainflip_chain: berghain

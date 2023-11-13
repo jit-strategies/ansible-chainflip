@@ -9,6 +9,8 @@
 - name: Prepare facts
   ansible.builtin.include_tasks:
     file: prepare.yml
+  when:
+    - not only_configure
 
 - name: Configure node
   ansible.builtin.include_tasks:
