@@ -56,13 +56,13 @@ engine_eth_rpc_http_endpoint: "http://127.0.0.1:8080"
 engine_eth_backup_rpc_ws_endpoint: ""
 engine_eth_backup_rpc_http_endpoint: ""
 # [dot.rpc]
-engine_dot_rpc_ws_endpoint: "wss://rpc-pdot.chainflip.xyz:443"
-engine_dot_rpc_http_endpoint: "https://rpc-pdot.chainflip.io:443"
+engine_dot_rpc_ws_endpoint: "ws://127.0.0.1:8081"
+engine_dot_rpc_http_endpoint: "http://127.0.0.1:8081"
 # [dot.backup_rpc]
 engine_dot_backup_rpc_ws_endpoint: ""
 engine_dot_backup_rpc_http_endpoint: ""
 # [btc.rpc]
-engine_btc_rpc_http_endpoint: "http://a108a82b574a640359e360cf66afd45d-424380952.eu-central-1.elb.amazonaws.com"
+engine_btc_rpc_http_endpoint: "http://127.0.0.1:8082"
 engine_btc_rpc_basic_auth_user: "flip"
 engine_btc_rpc_basic_auth_password: "flip"
 # [btc.backup_rpc]
