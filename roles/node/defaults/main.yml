@@ -1,8 +1,8 @@
 ---
-chainflip_chain: perseverance
+chainflip_chain: berghain
 chainflip_release: "{{ chainflip_chain }}"
-chainflip_apt_repository_url: https://repo.chainflip.io
-chainflip_apt_repository_key_id: FB3E88547C6B47C6
+chainflip_apt_repository_url: https://pkgs.chainflip.io
+chainflip_apt_repository_key_id: 4E506212E4EF4E0D3E37E568596FBDCACBBCDD37
 health_check: true
 only_configure: false
 config_path: "/etc/chainflip"
@@ -56,13 +56,13 @@ engine_eth_rpc_http_endpoint: "http://127.0.0.1:8080"
 engine_eth_backup_rpc_ws_endpoint: ""
 engine_eth_backup_rpc_http_endpoint: ""
 # [dot.rpc]
-engine_dot_rpc_ws_endpoint: "wss://rpc-pdot.chainflip.xyz:443"
-engine_dot_rpc_http_endpoint: "https://rpc-pdot.chainflip.io:443"
+engine_dot_rpc_ws_endpoint: "ws://127.0.0.1:8081"
+engine_dot_rpc_http_endpoint: "http://127.0.0.1:8081"
 # [dot.backup_rpc]
 engine_dot_backup_rpc_ws_endpoint: ""
 engine_dot_backup_rpc_http_endpoint: ""
 # [btc.rpc]
-engine_btc_rpc_http_endpoint: "http://a108a82b574a640359e360cf66afd45d-424380952.eu-central-1.elb.amazonaws.com"
+engine_btc_rpc_http_endpoint: "http://127.0.0.1:8082"
 engine_btc_rpc_basic_auth_user: "flip"
 engine_btc_rpc_basic_auth_password: "flip"
 # [btc.backup_rpc]

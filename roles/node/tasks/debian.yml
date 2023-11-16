@@ -14,12 +14,12 @@
 - name: Add apt repository into sources list
   ansible.builtin.apt_repository:
     repo: >-
-      deb {{ chainflip_apt_repository_url }}/{{ chainflip_release }}/{{ ansible_distribution_release }} {{ ansible_distribution_release }} main
+      deb {{ chainflip_apt_repository_url }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ chainflip_release }}
     state: present
 
 - name: Debug | Apt Repo
   ansible.builtin.debug:
-    msg: "Using APT repo: {{ chainflip_apt_repository_url }}/{{ chainflip_release }}/{{ ansible_distribution_release }} {{ ansible_distribution_release }} main"
+    msg: "Using APT repo: {{ chainflip_apt_repository_url }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ chainflip_release }}"
   run_once: true
 
 - name: Install node and cli packages
