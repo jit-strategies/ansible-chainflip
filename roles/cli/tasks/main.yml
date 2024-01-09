@@ -7,3 +7,8 @@
   until: result.rc == 0
   delay: "{{ delay }}"
   retries: "{{ retries }}"
+
+- name: Print result
+  ansible.builtin.debug:
+    var: result
+    verbosity: 2
