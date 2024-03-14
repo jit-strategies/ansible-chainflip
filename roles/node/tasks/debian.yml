@@ -16,11 +16,20 @@
     repo: >-
       deb {{ chainflip_apt_repository_url }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ chainflip_release }}
     state: present
+  when: chainflip_apt_repository_override is not defined
+
+- name: Add apt repository into sources list
+  ansible.builtin.apt_repository:
+    repo: >-
+      {{ chainflip_apt_repository_override }}
+    state: present
+  when: chainflip_apt_repository_override is defined
 
 - name: Debug | Apt Repo
   ansible.builtin.debug:
     msg: "Using APT repo: {{ chainflip_apt_repository_url }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ chainflip_release }}"
   run_once: true
+  when: chainflip_apt_repository_override is not defined
 
 - name: Install node and cli packages
   with_items: [chainflip-node, chainflip-cli]
