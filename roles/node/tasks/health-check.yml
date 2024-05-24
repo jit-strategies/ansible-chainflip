@@ -12,11 +12,10 @@
     method: POST
     body_format: json
 
-# Disabled until fixed upstream
-# - name: Engine Healthcheck
-#   retries: 5
-#   delay: 3
-#   register: engine_result
-#   until: engine_result.status == 200
-#   ansible.builtin.uri:
-#     url: "http://{{ engine_health_check_hostname }}:{{ engine_health_check_port }}/health"
+- name: Engine Healthcheck
+  retries: 5
+  delay: 3
+  register: engine_result
+  until: engine_result.status == 200
+  ansible.builtin.uri:
+    url: "http://{{ engine_health_check_hostname }}:{{ engine_health_check_port }}/health"
