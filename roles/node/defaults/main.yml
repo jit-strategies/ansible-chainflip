@@ -68,6 +68,12 @@ engine_btc_rpc_basic_auth_password: "flip"
 engine_btc_backup_rpc_http_endpoint: ""
 engine_btc_backup_rpc_basic_auth_user: ""
 engine_btc_rpc_backup_basic_auth_bassword: ""
+# [arb.rpc]
+engine_arb_rpc_ws_endpoint: "ws://127.0.0.1:8548"
+engine_arb_rpc_http_endpoint: "http://127.0.0.1:8547"
+# [arb.backup_rpc]
+engine_arb_backup_rpc_ws_endpoint: ""
+engine_arb_backup_rpc_http_endpoint: ""
 # [health_check]
 engine_health_check_hostname: "127.0.0.1"
 engine_health_check_port: "5555"
