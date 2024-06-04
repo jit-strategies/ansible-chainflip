@@ -35,7 +35,7 @@
   with_items: [chainflip-node, chainflip-cli]
   ansible.builtin.apt:
     name: "{{ item }}"
-    state: present
+    state: latest
     update_cache: true
   register: node_installed
   until: node_installed is successful
@@ -45,7 +45,7 @@
 - name: Install engine package
   ansible.builtin.apt:
     name: "chainflip-engine"
-    state: present
+    state: latest
     update_cache: true
   register: engine_installed
   until: engine_installed is successful
