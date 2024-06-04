@@ -68,6 +68,8 @@ engine_btc_rpc_basic_auth_password: "flip"
 engine_btc_backup_rpc_http_endpoint: ""
 engine_btc_backup_rpc_basic_auth_user: ""
 engine_btc_rpc_backup_basic_auth_bassword: ""
+# [dot]
+engine_dot_private_key_file: "{{ config_path }}/keys/ethereum_key_file"
 # [arb.rpc]
 engine_arb_rpc_ws_endpoint: "ws://127.0.0.1:8548"
 engine_arb_rpc_http_endpoint: "http://127.0.0.1:8547"

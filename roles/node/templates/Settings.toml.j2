@@ -47,6 +47,9 @@ basic_auth_user = "{{ engine_btc_backup_rpc_basic_auth_user }}"
 basic_auth_password = "{{ engine_btc_backup_rpc_basic_auth_password }}"
 {% endif %}
 
+[arb]
+private_key = "{{ engine_dot_private_key_file }}"
+
 [arb.rpc]
 http_endpoint = "{{ engine_arb_rpc_http_endpoint }}"
 ws_endpoint = "{{ engine_arb_rpc_ws_endpoint }}"
