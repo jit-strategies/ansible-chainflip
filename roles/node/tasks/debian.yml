@@ -44,7 +44,7 @@
 
 - name: Install engine package
   ansible.builtin.apt:
-    name: "chainflip-engine{{ engine_version }}"
+    name: "chainflip-engine"
     state: present
     update_cache: true
   register: engine_installed
