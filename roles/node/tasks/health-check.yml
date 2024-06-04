@@ -1,6 +1,6 @@
 - name: Node Healthcheck
-  retries: 5
-  delay: 3
+  retries: 6
+  delay: 5
   register: node_result
   until: node_result.status == 200
   ansible.builtin.uri:
@@ -13,8 +13,8 @@
     body_format: json
 
 - name: Engine Healthcheck
-  retries: 5
-  delay: 3
+  retries: 6
+  delay: 5
   register: engine_result
   until: engine_result.status == 200
   ansible.builtin.uri:
