@@ -60,6 +60,16 @@ http_endpoint = "{{ engine_arb_backup_rpc_http_endpoint }}"
 ws_endpoint = "{{ engine_arb_backup_rpc_ws_endpoint }}"
 {% endif %}
 
+[sol.rpc]
+http_endpoint = "{{ engine_sol_rpc_http_endpoint }}"
+ws_endpoint = "{{ engine_sol_rpc_ws_endpoint }}"
+
+{% if (engine_sol_backup_rpc_http_endpoint | length > 0) or (engine_sol_backup_rpc_ws_endpoint | length > 0)  %}
+[sol.backup_rpc]
+http_endpoint = "{{ engine_sol_backup_rpc_http_endpoint }}"
+ws_endpoint = "{{ engine_sol_backup_rpc_ws_endpoint }}"
+{% endif %}
+
 [health_check]
 hostname = "{{ engine_health_check_hostname }}"
 port = "{{ engine_health_check_port }}"
