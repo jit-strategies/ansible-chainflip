@@ -1,8 +1,6 @@
 ---
 - name: Provision validator
   hosts: all
-  collections:
-    - jitstrategies.chainflip
   gather_facts: true
   become: true
   tasks:

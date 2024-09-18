@@ -10,7 +10,8 @@
 #   ansible-playbook -i 'localhost,' galaxy-deploy.yml \
 #   -e "github_tag=${{ github.ref }}"
 
-- hosts: localhost
+- name: Publish Ansible Collection
+  hosts: localhost
   connection: local
   gather_facts: false
 
@@ -24,7 +25,7 @@
     - name: Ensure ANSIBLE_GALAXY_TOKEN is set.
       fail:
         msg: A valid ANSIBLE_GALAXY_TOKEN must be set.
-      when: "lookup('env','ANSIBLE_GALAXY_TOKEN') | length == 0"
+      when: "lookup('env', 'ANSIBLE_GALAXY_TOKEN') | length == 0"
 
     - name: Ensure the ~/.ansible directory exists.
       file:

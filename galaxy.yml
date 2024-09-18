@@ -10,6 +10,7 @@ license:
 tags:
   - blockchain
   - dex
+  - linux
 dependencies:
   community.general: ">=6.1.0"
 repository: https://github.com/jit-strategies/ansible-chainflip
