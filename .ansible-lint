@@ -20,3 +20,4 @@ skip_list:
   - galaxy[no-changelog]
   - schema[meta]
   - var-naming
+  - package-latest

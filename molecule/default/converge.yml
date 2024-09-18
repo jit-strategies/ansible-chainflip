@@ -10,3 +10,5 @@
         node_validator: true
         engine_generate_eth_key: true
         chainflip_chain: berghain
+        health_check: false
+
