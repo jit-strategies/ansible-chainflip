@@ -78,10 +78,8 @@ engine_arb_backup_rpc_ws_endpoint: ""
 engine_arb_backup_rpc_http_endpoint: ""
 
 # [sol.rpc]
-engine_sol_rpc_ws_endpoint: "ws://127.0.0.1:8548"
 engine_sol_rpc_http_endpoint: "http://127.0.0.1:8547"
 # [sol.backup_rpc]
-engine_sol_backup_rpc_ws_endpoint: ""
 engine_sol_backup_rpc_http_endpoint: ""
 
 # [health_check]
