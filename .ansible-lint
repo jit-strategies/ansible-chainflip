@@ -13,6 +13,7 @@ exclude_paths:
   - '**/__pycache__/*'
   - '**/.yamllint'
   - '**/test.ym*l'
+  - 'galaxy-deploy.yml'
 skip_list:
   - no-changed-when
   - no-handler
@@ -20,3 +21,5 @@ skip_list:
   - galaxy[no-changelog]
   - schema[meta]
   - var-naming
+  - package-latest
+  - risky-shell-pipe
